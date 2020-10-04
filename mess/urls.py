@@ -17,6 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('',views.signup,name='signup'),
-    path('/home',views.home,name='home'),
+    path('login/',views.loginuser,name='loginuser'), 
+    path('',views.home,name='home'),
+    path('items/',views.itemslist,name='itemslist'),
+    path('signup/',views.signupuser,name='signupuser'),
+    path('logout/',views.logoutuser,name='logoutuser'), 
+    path('serachreg/',views.saerchreg,name='searchreg'), 
+    path('view_orders/',views.view_orders,name='view_orders'),
+
 ]

@@ -18,26 +18,39 @@
             <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
+            {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="#">Bills</a>
             </li>
+            {% endif %}
             <!-- It should not show at the time of mess member login  -->
+            {% if user.is_authenticated  and  customer %}    
+            
              <li class="nav-item">
                 <a class="nav-link" href="#">Book the Meal</a>
             </li>
+            {% endif %}
+          
             <!-- mess member only -->
             <!-- Details about the particular day mess  -->
+            {% if user.is_authenticated  and  customer %}    
             <li class="nav-item">
-            <a class="nav-link" href="#">Check the mess</a>
+              <a class="nav-link" href="#">Check the mess</a>
             </li>
-
-
+          {% endif %}
+            
+          </form>
+          {% if user.is_authenticated %}           
+            <form method='POST' action="{% url 'logoutuser' %}" class="form-inline my-2 my-lg-0" style="position:fixed;right:20%;">
+                {% csrf_token %}
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+          {% endif %}
           </ul>
           <!-- it should not show at the time of student login  -->
-          <form class="form-inline my-2 my-lg-0">
+          <form method="POST" action="{% url 'searchreg' %}" form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+            <button class="btn btn-outline-success my-4 my-sm-0" type="submit">Search</button>
         </div>
       </nav>
     {% block content %}

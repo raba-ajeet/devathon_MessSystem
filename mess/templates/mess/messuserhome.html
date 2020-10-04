@@ -1,0 +1,22 @@
+{% extends "mess/base.html" %}
+{% block content %}
+    <h1> requests </h1>
+    <ul>
+    {% for order in orders %}
+        <li><h2>
+            {{order.timings }} - {{order.date_booked }} -
+            {{ order.customer.registration_no }} <br>
+            items booked 
+            <ol>
+            {% for item in order.item_booked.all %}
+            <li>{{ item.item_name }} - {{item.price}} </li>
+            
+            {% endfor  %}
+            </ol>
+        </h2>
+        <h1>{{order.total}}</h1>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

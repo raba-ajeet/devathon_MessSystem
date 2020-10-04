@@ -8,13 +8,15 @@
 <body style="background-image: url('{% static "/images/image.jpeg" %}')">
      <div class="login-page">
      <div class="form">
-          <form class="register-form">
+          <form method="POST" class="register-form">
               {% csrf_token %}
-            <input type="text" placeholder="Name"/>
+              {{ form }}
+            <!-- <input type="text" placeholder="Name"/>
             <input type="text" placeholder="Registration No."/>
             <input type="text" placeholder="Email ID"/>
             <input type="text" placeholder="Password"/>
-            <button>Create</button>
+            <button>Create</button> -->
+                <button type="submit">SignUp</button>
             <p class="message">Already Registered?<a href="#">Login</a></p>
         </form>
           <form class="login-form">
